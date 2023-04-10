@@ -1,0 +1,34 @@
+QFrame {
+    background-color: #666;
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 0 #666, stop: 0.5 #555, stop: 1 #666
+    );
+    border-radius:5px;
+}
+
+*[qss_level="raised"]{
+    border-top: 2px solid #ccc;
+    border-left: 2px solid #ccc;
+    border-right: 1px solid #111;
+    border-bottom: 1px solid #111;
+}
+*[qss_level="sunken"],
+QLCDNumber
+{
+    border-top: 2px solid #111;
+    border-left: 2px solid #111;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+QLCDNumber{
+    color: #5DFF00;
+    /* color: #10710C; */
+}
+
+#application_widget {
+
+}
+
+#workarea_frame {
+}

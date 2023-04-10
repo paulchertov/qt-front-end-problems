@@ -1,0 +1,14 @@
+QFrame#player{
+}
+#player QSlider::handle:horizontal{
+    background-color: #666;
+    border-radius: 20px;
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 0 #555, stop: 0.7 #666, stop: 1 #555
+    );
+    border-top: 2px solid #bbb;
+    border-left: 2px solid #bbb;
+    border-right: 1px solid #111;
+    border-bottom: 1px solid #111;
+}

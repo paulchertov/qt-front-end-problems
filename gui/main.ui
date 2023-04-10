@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Application</class>
+ <widget class="QFrame" name="application_widget">
+  <layout class="QVBoxLayout" name="app_layout">
+    <item>
+     <widget class="QFrame" name="workarea_frame">
+      <property name="qss_level">
+        <string>sunken</string>
+      </property>
+      <layout class="QVBoxLayout" name="workarea_layout">
+       <item>
+        <widget class="QStackedWidget" name="workarea"/>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

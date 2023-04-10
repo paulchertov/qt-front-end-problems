@@ -1,0 +1,3 @@
+
+class AbstractTransportItem:
+    pass
