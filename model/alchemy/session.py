@@ -1,27 +1,46 @@
-from typing import Protocol, Optional, Generator
-from contextlib import ContextDecorator
+from typing import Optional
+from contextlib import contextmanager
+from abc import ABC, abstractmethod
 
 from sqlalchemy import create_engine
 from sqlalchemy.engine import Connection, Engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.orm.session import Session
 
+from model.alchemy.install import sqlite_engine
 
-class ISessionProvider(Protocol):
+
+class AbstractSessionProvider(ABC):
     """
-    Interface of session provider.
+    Abstract class of session provider.
     provider should implement the following methods:
-        session: creates and returns SQLAlchemy session (preferrably scoped, will be used
-            in a separate tread
+        create_session: creates and returns
+            SQLAlchemy session (preferrably scoped, will
+            be used in a separate tread)
         close: close session
         error: rollback session on error
     """
-    def session(self) -> Session: ...
+
+    @abstractmethod
+    def create_session(self) -> Session: ...
+
+    @abstractmethod
     def close(self) -> None: ...
+
+    @abstractmethod
     def error(self) -> None: ...
 
+    @contextmanager
+    def __call__(self, *args, **kwargs):
+        try:
+            yield self.create_session()
+        except Exception as e:
+            self.error()
+        finally:
+            self.close()
 
-class OneTimeSessionProvider:
+
+class OneTimeSessionProvider(AbstractSessionProvider):
     """
     Barbaric way to create and drop all machinery around session
     on each request
@@ -33,12 +52,8 @@ class OneTimeSessionProvider:
         self.__file_name = file_name
         self.__debug = debug
 
-    def session(self) -> Session:
-        self.__engine = create_engine(
-            f'sqlite:///{self.__file_name}',
-            echo=self.__debug,
-            convert_unicode=True
-        )
+    def create_session(self) -> Session:
+        self.__engine = sqlite_engine(self.__file_name)
         self.__connection = self.__engine.connect()
         self.__session = scoped_session(
             sessionmaker(autocommit=False, autoflush=True, bind=self.__engine)

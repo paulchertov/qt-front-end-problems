@@ -1,3 +1,5 @@
+from abc import ABC
 
-class AbstractTransportItem:
+
+class AbstractTransportItem(ABC):
     pass
