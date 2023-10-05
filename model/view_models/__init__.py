@@ -28,20 +28,7 @@ class ViewModelField:
             setattr(instance, self.__was_updated_name, True)
 
 
-class ViewModelMeta(type(QObject)):
-    """
-    Metaclass for view models
-    """
-    def __new__(cls, name, bases, attrs):
-        view_model_fields = [
-            attr_value
-            for attr_value in attrs.values()
-            if isinstance(attr_value, ViewModelField)
-        ]
-        return super().__new__(cls, name, bases, attrs)
-
-
-class PSViewModel(QObject, metaclass=ViewModelMeta):
+class PSViewModel(QObject):
     """
     Base class for view models
     """
