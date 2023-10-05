@@ -16,6 +16,12 @@ from services.adapters.db_to_trans_lists import song_list_to_transport
 
 
 class PSObtainSongList(PSDBTask):
+    """
+    Task to obtain a list of songs
+        signals:
+            song_list_obtained: Signal to emit the obtained song list
+            error: Signal to emit an error
+    """
     song_list_obtained = Signal(SongListTransport)
 
     def __init__(

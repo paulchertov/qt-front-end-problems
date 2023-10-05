@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Application</class>
+ <widget class="QFrame" name="songs_widget">
+  <layout class="QVBoxLayout" name="songs_layout">
+   <item>
+    <widget class="QLabel" name="title"/>
+   </item>
+   <item>
+    <widget class="QLabel" name="title"/>
+   </item>
+   <item>
+    <widget class="QLabel" name="title"/>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

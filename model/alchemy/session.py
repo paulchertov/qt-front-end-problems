@@ -2,7 +2,6 @@ from typing import Optional
 from contextlib import contextmanager
 from abc import ABC, abstractmethod
 
-from sqlalchemy import create_engine
 from sqlalchemy.engine import Connection, Engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.orm.session import Session
