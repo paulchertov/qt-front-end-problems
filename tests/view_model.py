@@ -31,3 +31,7 @@ if __name__ == "__main__":
     tv.name = "xxx"
     target_string = "xxx zzz"
     tv.description = "zzz"
+
+    target_string = "will never be equal"
+    with tv.update():
+        pass
