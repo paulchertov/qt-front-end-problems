@@ -63,6 +63,21 @@ class AbstractIndexer(ABC, Generic[KeyType, SourceType, ResultType]):
         return self.__index.get(item, default)
 
     def add(self, item: SourceType) -> ResultType:
+        """
+        Updates or creates an object in a collection based on the existence of the
+        provided item. If the item exists, it retrieves the associated value from
+        the collection and updates it with the provided item. Otherwise, it creates
+        a new object and associates it with the item's ID in the collection.
+
+        Args:
+            item (SourceType): object to be created or retrieved from the document,
+                and its value is used to create or update an object in the index.
+
+        Returns:
+            ResultType: an instance of a Python object representing the newly
+            created or updated object in the dictionary.
+
+        """
         if self.exists(item):
             result = self[self.obtain_id(item)]
             self.update_object(result, item)
