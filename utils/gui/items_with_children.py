@@ -10,9 +10,14 @@ from PySide6.QtWidgets import QLayout
 
 def clear_items(layout: QLayout):
     """
-    Clears all widgets from layout
-    :param layout: layout to clear
-    :return: None
+    Removes widgets from a `QWidgetLayout` instance by iterating over its items,
+    removing each item's widget and deleting it once removed.
+
+    Args:
+        layout (QLayout): 2D layout of the widgets in the main widget, and it is
+            used to remove widgets from the layout by taking them at the index 0
+            when their count is greater than 0.
+
     """
     while layout.count() > 0:
         item = layout.takeAt(0)
