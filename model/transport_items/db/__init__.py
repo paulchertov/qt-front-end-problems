@@ -1,3 +1,9 @@
+"""
+This module contains the transport items for the database items
+Submodules:
+    basic: Contains the basic transport items for the database items
+    lists: Contains the transport items for listing items from the database
+"""
 from dataclasses import dataclass
 from typing import List, Dict, Any
 from enum import Enum

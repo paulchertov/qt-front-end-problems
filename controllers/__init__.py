@@ -104,9 +104,7 @@ class PSWithViewMixin:
                 with open(style_path, 'r') as file:
                     self.__class__.qss_text = file.read()
             except FileNotFoundError as e:
-                raise AttributeError(
-                    f"No .qss file exists"
-                ) from e
+                pass
         self.view.setStyleSheet(self.qss_text)
 
     def view_handler(self, handler: Callable):

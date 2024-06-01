@@ -1,3 +1,6 @@
+"""
+This module contains the SQLAlchemy table definitions for the database schema.
+"""
 from __future__ import annotations
 from typing import List
 

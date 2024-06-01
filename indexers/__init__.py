@@ -20,25 +20,25 @@ class AbstractIndexer(ABC, Generic[KeyType, SourceType, ResultType]):
     source class instance and some hashable type that will serve as id.
 
     To set correct type checking You need to provide
-        KeyType - Hashable type that represents identifier, which is
+        KeyType: Hashable type that represents identifier, which is
             used as keys in the index
-        SourceType - type of the object that is used as data source
+        SourceType: type of the object that is used as data source
             to create and update values in the index
-        ResultType - type of the object values that are present in index
+        ResultType: type of the object values that are present in index
 
     Should implement methods:
-        obtain_id - function that when given a data source object will return
+        obtain_id: function that when given a data source object will return
             an id for it
-        create_object - function that when given a data source object will
+        create_object: function that when given a data source object will
             return corresponding value to be stored in the index
-        update_object - function that when given a data source object and
+        update_object: function that when given a data source object and
             value from the index will update value from index to represent
             that data source object
     implemented methods:
-        exists - checks if there is an object in the index that corresponds to provided
+        exists: checks if there is an object in the index that corresponds to provided
             data source one
-        get - dictionary-like method that returns an object by id or default if there is no such object
-        add - adds an object to the index
+        get: dictionary-like method that returns an object by id or default if there is no such object
+        add: adds an object to the index
     """
     def __init__(self):
         self.__index = WeakValueDictionary()

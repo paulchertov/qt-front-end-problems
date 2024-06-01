@@ -7,10 +7,13 @@
     <widget class="QLabel" name="title"/>
    </item>
    <item>
-    <widget class="QLabel" name="title"/>
+    <widget class="QPushButton" name="artist_link"/>
    </item>
    <item>
-    <widget class="QLabel" name="title"/>
+    <layout class="QHBoxLayout" name="tags_layout"></layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="genres_layout"></layout>
    </item>
   </layout>
  </widget>

@@ -21,27 +21,49 @@ class PSObtainSongList(PSDBTask):
         signals:
             song_list_obtained: Signal to emit the obtained song list
             error: Signal to emit an error
+        fields:
+            :str id: task id
+            :int page: currently selected page
+            :int page_size: number of items per page
+            :SongsListFilters filters: filters to apply to the list
+            :SongsListSorting sortings: sortings to apply to the list
+
+            All fields are required in the constructor
+        methods:
+            :Signal success(): service method defined to point on a signal to emit see
+            :SongListTransport : query to get the song list
+            :Selectable add_filters_and_sortings(Selectable query): adds filters and sortings to the query
     """
     song_list_obtained = Signal(SongListTransport)
 
     def __init__(
         self,
+        id: str,
         session_provider: AbstractSessionProvider,
         page: int,
         page_size: int,
         filters: SongsListFilters,
         sortings: SongsListSorting
     ):
-        super().__init__(session_provider)
+        super().__init__(id, session_provider)
         self.page = page
         self.page_size = page_size
         self.filters = filters
         self.sortings = sortings
 
     def success(self) -> Signal:
+        """
+        On success signal song_list_obtained is emitted
+        """
         return self.song_list_obtained
 
     def query(self, session: Session) -> SongListTransport:
+        """
+        Query to get the song list
+
+        :param session: session to execute the query
+        :return: SongListTransport
+        """
         count_query = select(func.count(Song.id.distinct())).\
             select_from(Song).\
             outerjoin(Song.artist).\

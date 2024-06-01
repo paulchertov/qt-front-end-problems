@@ -17,8 +17,8 @@ class PSObtainSong(PSDBTask):
     """
     song_obtained = Signal(SongDetailsTransport)
 
-    def __init__(self, session_provider: AbstractSessionProvider, song_id: int):
-        super().__init__(session_provider)
+    def __init__(self, id: str, session_provider: AbstractSessionProvider, song_id: int):
+        super().__init__(id, session_provider)
         self.song_id = song_id
 
     def success(self) -> Signal:

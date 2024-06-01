@@ -1,3 +1,11 @@
+"""
+This module contains dataclasses for transport items for listings
+of database entities.
+Classes:
+    SongsListFilters: Filters for song listing
+    SongsListSorting: Sorting for song listing
+    SongListTransport: Transport item for song listing
+"""
 from typing import Optional
 from dataclasses import dataclass
 

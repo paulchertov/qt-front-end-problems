@@ -23,8 +23,12 @@ class PSDBTask(PSTask):
     methods:
         run: run QThread, this method should not be overridden
     """
-    def __init__(self, session_provider: AbstractSessionProvider):
-        super().__init__()
+    def __init__(
+        self,
+        id: str,
+        session_provider: AbstractSessionProvider
+    ):
+        super().__init__(id)
         self.session_provider = session_provider
 
     def __del__(self):

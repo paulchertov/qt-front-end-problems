@@ -1,3 +1,12 @@
+"""
+Session provider for SQLAlchemy.
+Defines abstract class for session provider and the very basic implementation
+of it. Objects in this module designed to work with Qt (PySide6) application.
+
+Classes:
+    AbstractSessionProvider: Abstract class for session provider
+    OneTimeSessionProvider: Basic implementation of session provider
+"""
 from typing import Optional
 from contextlib import contextmanager
 from abc import ABC, abstractmethod
@@ -12,6 +21,8 @@ from model.alchemy.install import sqlite_engine
 class AbstractSessionProvider(ABC):
     """
     Abstract class of session provider.
+    On call works as context manager.
+
     provider should implement the following methods:
         create_session: creates and returns
             SQLAlchemy session (preferrably scoped, will
